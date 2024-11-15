@@ -1,4 +1,6 @@
+//Alina Henseleit
 /*I will create a lunar lander game with the theme of an falling egg */
+//<title>Save the baby bird</title>
 
 let state = "start";
 let backgroundX = 100;
@@ -9,8 +11,6 @@ let buttonY = 170;
 let s = 0.7;
 let y = 100;
 let x = 256;
-//let featherThere = true;
-let direction = "forward";
 
 //for falling down egg
 //game logic variables
@@ -25,16 +25,41 @@ function setup() {
 }
 
 function startScreen() {
-  background(200, 200, 250);
+  background(149, 206, 222);
 
-  fill(209, 36, 36);
+  fill(84, 116, 125);
   noStroke();
 
   rect(buttonX, buttonY, 200, 100, 10);
 
+  //Start
   fill(200, 200, 250);
   textSize(40);
   text("START", 235, 235);
+
+  //cloude left
+  fill(255, 255, 255);
+  rect(backgroundX + 25, backgroundY + 40, 100, 30, 20);
+  ellipse(backgroundX + 60, backgroundY + 40, 50);
+  ellipse(backgroundX + 90, backgroundY + 40, 50);
+
+  //cloud right
+  rect(backgroundX + 280, backgroundY - 30, 150, 30, 20);
+  ellipse(backgroundX + 320, backgroundY - 30, 50);
+  ellipse(backgroundX + 390, backgroundY - 30, 50);
+  ellipse(backgroundX + 355, backgroundY - 40, 50);
+
+  //instructions
+  fill(133, 66, 127);
+  textSize(30);
+  text("SAVE THE BABY BIRD", 145, 130);
+
+  fill(255, 255, 255);
+  textSize(15);
+  text("INSTRUCTIONS", 240, 320);
+  textSize(10);
+  text("Land the egg savely in the nest.", 228, 340);
+  text("Control the speed with the space key.", 216, 355);
 }
 
 function gameScreen() {
@@ -197,36 +222,6 @@ function egg(x, y, s) {
   ellipse(x - 3 * s, y + 15 * s, 5 * s);
   ellipse(x + 3 * s, y + 18 * s, 5 * s);
   ellipse(x - 6 * s, y + 25 * s, 5 * s);
-
-  // if (featherThere) {
-  //   push();
-  //   translate(180, -230);
-  //   rotate(0.4);
-  //   strokeWeight(1);
-  //   stroke(179, 157, 138);
-
-  //   line(x, y + 200, x, y + 250);
-  //   line(x, y + 240, x - 10, y + 220);
-  //   line(x, y + 235, x - 10, y + 215);
-  //   line(x, y + 230, x - 10, y + 210);
-  //   line(x, y + 225, x - 10, y + 205);
-  //   line(x, y + 220, x - 10, y + 200);
-  //   line(x, y + 215, x - 8, y + 195);
-  //   line(x, y + 210, x - 6, y + 193);
-  //   line(x, y + 200, x - 2, y + 187);
-
-  //   line(x, y + 200, x, y + 250);
-  //   line(x, y + 240, x + 10, y + 220);
-  //   line(x, y + 235, x + 10, y + 215);
-  //   line(x, y + 230, x + 10, y + 210);
-  //   line(x, y + 225, x + 10, y + 205);
-  //   line(x, y + 220, x + 10, y + 200);
-  //   line(x, y + 215, x + 8, y + 195);
-  //   line(x, y + 210, x + 6, y + 193);
-  //   line(x, y + 200, x + 2, y + 187);
-  //   pop();
-  // } else {
-  // }
 
   //egg crack
   stroke(179, 157, 138);
@@ -592,9 +587,9 @@ function resultScreenSuccess() {
   arc(246, 360, 35, 35, 25, 97);
 
   //text success
-  rect(buttonX, buttonY, 200, 100, 10);
+  rect(buttonX - 10, buttonY, 220, 100, 10);
 
-  fill(155, 237, 147);
+  fill(133, 156, 90);
   textSize(40);
   text("SUCCESS", 205, 235);
 
@@ -617,7 +612,7 @@ function draw() {
       y = y + velocityY;
       velocityY = velocityY + acceleration;
 
-      if (mouseIsPressed) {
+      if (keyIsDown(32)) {
         velocityY = velocityY - 0.8;
       }
       egg(x, y, s);
@@ -633,8 +628,6 @@ function draw() {
         velocityY = 0.2;
       }
     }
-    console.log(y);
-    //egg(x, y, s);
   }
 }
 
