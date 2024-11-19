@@ -12,8 +12,10 @@ let s = 0.7;
 let y = 100;
 let x = 256;
 
-//for falling down egg
-//game logic variables
+/*for falling down egg
+game logic variables
+velocity = how fast something is moving
+acceleration = how quickly velocity is increasing*/
 let velocityY = 0.2;
 let acceleration = 0.2;
 
