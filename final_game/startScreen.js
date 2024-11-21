@@ -77,11 +77,10 @@ class Button {
     this.ButtonWidth = ButtonWidth;
     this.ButtonHeight = ButtonHeight;
     this.ButtonText = ButtonText;
+    this.TextSize = 30;
   }
 
   draw() {
-    push(); //because of Text alignment of Uni rush
-
     fill(234, 206, 173);
     rect(
       this.ButtonX + 20,
@@ -92,23 +91,52 @@ class Button {
     );
 
     //text
-    fill(255); // White text color
-    textSize(20); // Font size
-    textAlign(CENTER, CENTER); // Center the text
+    fill(255, 255, 255);
+    textSize(this.TextSize);
+    text(this.ButtonText, this.ButtonX + 80, this.ButtonY + 135);
+  }
+}
+
+class InstructionButton extends Button {
+  constructor(ButtonX, ButtonY, ButtonWidth, ButtonHeight, ButtonText) {
+    super(ButtonX, ButtonY, ButtonWidth, ButtonHeight, ButtonText);
+    this.TextSize = 20;
+  }
+
+  draw() {
+    fill(234, 206, 173);
+    rect(
+      this.ButtonX + 20,
+      this.ButtonY + 100,
+      this.ButtonWidth,
+      this.ButtonHeight,
+      10
+    );
+
+    // Adjusted text position
+    fill(255, 255, 255);
+    textSize(this.TextSize);
     text(
       this.ButtonText,
-      this.ButtonX + this.ButtonWidth / 2,
-      this.ButtonY + this.ButtonHeight / 2
+      this.ButtonX + 70, // Adjusted X position
+      this.ButtonY + 120 // Adjusted Y position
     );
-    pop();
   }
 }
 
 let button = new Button(100, 100, 200, 50, "START");
+let instructionButton = new InstructionButton(
+  100,
+  160,
+  200,
+  25,
+  "Instructions"
+);
 
 function draw() {
   startScreen(100, 100);
   button.draw();
+  instructionButton.draw();
 
   //stars
   noStroke();
